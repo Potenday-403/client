@@ -1,3 +1,9 @@
+import { LoginTest } from "@/components/LoginTest";
+
 export default function SigninPage() {
-  return <div>로그인</div>;
+  return (
+    <div>
+      <LoginTest />
+    </div>
+  );
 }
