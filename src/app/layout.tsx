@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/hooks/provider";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Script
+          src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.1/kakao.min.js"
+          integrity={process.env.NEXT_PUBLIC_KAKAO_INTERGRITY}
+          crossOrigin="anonymous"
+        ></Script>
         <Providers>{children}</Providers>
       </body>
     </html>
