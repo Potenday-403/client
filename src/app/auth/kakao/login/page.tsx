@@ -1,4 +1,5 @@
 "use client";
+import { LogoutTest } from "@/components/LogoutTest";
 import { getKakaoToken } from "@/service/kakao";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
@@ -13,5 +14,9 @@ export default function page() {
   });
   console.log(query.data);
 
-  return <div>로그인함</div>;
+  return (
+    <div>
+      <LogoutTest />
+    </div>
+  );
 }

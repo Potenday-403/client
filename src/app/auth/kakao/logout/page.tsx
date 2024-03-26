@@ -1,3 +1,3 @@
 export default function KakaoLogoutPage() {
-  return <div></div>;
+  return <div>로그아웃함</div>;
 }
