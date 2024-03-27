@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={inter.className}>
+      <body className="max-w-main min-w-main max-h-main mx-auto bg-white">
         <Script
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.1/kakao.min.js"
           integrity={process.env.NEXT_PUBLIC_KAKAO_INTERGRITY}

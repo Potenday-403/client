@@ -28,6 +28,18 @@ const config: Config = {
         "green-light": "#EFF1B1",
         "gray-subtle": "#F2F4F7",
       },
+      maxWidth: {
+        main: "375px",
+      },
+      minWidth: {
+        main: "375px",
+      },
+      maxHeight: {
+        main: "812px",
+      },
+      minHeight: {
+        main: "812px",
+      },
     },
   },
   plugins: [],
