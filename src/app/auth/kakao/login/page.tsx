@@ -1,22 +1,25 @@
 "use client";
-import { LogoutTest } from "@/components/LogoutTest";
+
 import { getKakaoToken } from "@/services/kakao";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function KakaoLoginPage() {
+  const navigation = useRouter();
   const searchParams = useSearchParams();
   const AuthorizationCode = searchParams.get("code")!;
+  const [userInfo, setUserInfo] = useState();
 
   const query = useQuery({
     queryKey: ["kakaotoken"],
     queryFn: () => getKakaoToken(AuthorizationCode),
   });
-  console.log(query.data);
+  console.log(query.data, 1);
 
-  return (
-    <div>
-      <LogoutTest />
-    </div>
-  );
+  useEffect(() => {
+    userInfo ? navigation.push("/") : navigation.push("/signup");
+  }, [userInfo]);
+
+  return <div></div>;
 }

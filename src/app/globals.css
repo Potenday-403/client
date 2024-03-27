@@ -5,5 +5,5 @@
 html,
 body {
   background: #000;
-  min-height: 812px;
+  height: 100vh;
 }
