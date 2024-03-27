@@ -1,6 +1,6 @@
 "use client";
 import { LogoutTest } from "@/components/LogoutTest";
-import { getKakaoToken } from "@/service/kakao";
+import { getKakaoToken } from "@/services/kakao";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 
