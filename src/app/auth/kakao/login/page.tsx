@@ -1,10 +1,10 @@
 "use client";
 import { LogoutTest } from "@/components/LogoutTest";
-import { getKakaoToken } from "@/service/kakao";
+import { getKakaoToken } from "@/services/kakao";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 
-export default function page() {
+export default function KakaoLoginPage() {
   const searchParams = useSearchParams();
   const AuthorizationCode = searchParams.get("code")!;
 
