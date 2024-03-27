@@ -3,8 +3,9 @@
 type Props = {
   text: string;
   bgcolor: string;
-  icon: string;
   size: "small" | "normal" | "big";
+  align?: "center" | "left";
+  icon?: React.ReactNode;
   textcolor?: string;
   onClick?: () => void;
 };
@@ -13,6 +14,7 @@ export function Button({
   bgcolor,
   icon,
   textcolor,
+  align = "center",
   size,
   onClick,
 }: Props) {
@@ -24,10 +26,10 @@ export function Button({
 
   return (
     <button
-      className={`flex items-center justify-center gap-2 rounded-xl p-4 ${sizeClass} bg-${bgcolor} ${textcolor ? `text-${textcolor}` : ""}  `}
+      className={`flex items-center gap-2 rounded-xl p-4 ${align === "center" ? "justify-center" : "justify-start"} ${sizeClass} bg-${bgcolor} ${textcolor ? `text-${textcolor}` : ""}  `}
       onClick={handleClick}
     >
-      {icon || <div className="h-5 w-5 bg-yellow"></div>}
+      {icon && icon}
       {text}
     </button>
   );

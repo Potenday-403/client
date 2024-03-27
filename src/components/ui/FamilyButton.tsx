@@ -1,7 +1,7 @@
 "use client";
 
 type Props = {
-  icon: string;
+  icon?: React.ReactNode;
   onClick?: () => void;
 };
 export function FamilyButton({
@@ -19,7 +19,7 @@ export function FamilyButton({
       onClick={handleClick}
     >
       가족
-      {icon || <div className="h-5 w-5 bg-yellow"></div>}
+      {icon && icon}
     </button>
   );
 }
