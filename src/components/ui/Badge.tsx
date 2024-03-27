@@ -4,7 +4,7 @@ type Props = {
   bgcolor: string;
   textcolor?: string;
   text: string;
-  icon?: string;
+  icon?: React.ReactNode;
   onClick?: () => void;
 };
 export function Badge({
@@ -21,10 +21,10 @@ export function Badge({
   return (
     <>
       <button
-        className={`flex items-center gap-1 rounded-3xl  px-3 py-1 bg-${bgcolor}`}
+        className={`flex h-7 items-center gap-1 rounded-3xl px-3  py-3 text-sm bg-${bgcolor}`}
         onClick={handleClick}
       >
-        {icon && <div className="h-5 w-5 bg-black"></div>}
+        {icon && icon}
         <p className={`text-${textcolor}`}>{text}</p>
       </button>
     </>
