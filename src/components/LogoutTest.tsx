@@ -2,9 +2,12 @@
 
 export function LogoutTest() {
   const handleClink = () => {
+    console.log(1);
+
     const logoutURL = `https://kauth.kakao.com/oauth/logout?client_id=$b3e1ddc013de897a5e8ee758444e6b97&logout_redirect_uri=https://client-7ui8gxta6-tmdgus95s-projects.vercel.app/auth/kakao/logout`;
     window.location.href = logoutURL;
   };
+  console.log(2);
 
   console.log("로그아웃 테스트");
   console.log(process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY, "레스트api");
