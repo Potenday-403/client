@@ -14,7 +14,7 @@ export function KakaoShare() {
   useEffect(() => {
     if (window.Kakao) {
       if (!window.Kakao.isInitialized()) {
-        window.Kakao.init("398ff9e447ce50464493c23c9076e390");
+        window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
         console.log("after Init: ", window.Kakao.isInitialized());
         window.Kakao.Share.createDefaultButton({
           container: "#kakaotalk-sharing-btn",
