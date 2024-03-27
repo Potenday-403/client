@@ -20,13 +20,26 @@ export function Button({
     onClick && onClick();
   };
 
+  const sizeClass = getSizeClass(size);
+
   return (
     <button
-      className={`flex items-center justify-center gap-2 rounded-xl p-4 ${size === "big" ? "h-14 w-80" : size === "normal" ? "h-12 w-40" : "h-10 w-32"} bg-${bgcolor} ${textcolor ? `text-${textcolor}` : ""}  `}
+      className={`flex items-center justify-center gap-2 rounded-xl p-4 ${sizeClass} bg-${bgcolor} ${textcolor ? `text-${textcolor}` : ""}  `}
       onClick={handleClick}
     >
       {icon || <div className="h-5 w-5 bg-yellow"></div>}
       {text}
     </button>
   );
+}
+
+function getSizeClass(size: string) {
+  switch (size) {
+    case "big":
+      return "h-14 w-80";
+    case "normal":
+      return "h-12 w-40";
+    default:
+      return "h-10 w-32";
+  }
 }
