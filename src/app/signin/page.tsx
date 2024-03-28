@@ -1,11 +1,9 @@
-import { KakaoShare } from "@/components/KakaoShare";
-import { LoginTest } from "@/components/LoginTest";
+import { LoginButton } from "@/components/LoginButton";
 
 export default function SigninPage() {
   return (
-    <div>
-      <LoginTest />
-      <KakaoShare />
+    <div className="flex min-h-main justify-center bg-blue-200 pt-[526px]  ">
+      <LoginButton />
     </div>
   );
 }
