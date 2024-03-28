@@ -20,7 +20,7 @@ export function Badge({
 
   return (
     <div
-      className={`flex h-7 items-center gap-1 rounded-3xl px-3  py-3 text-sm text-${textcolor} bg-${bgcolor}`}
+      className={`inline-flex h-7 items-center gap-1 rounded-3xl px-3  py-3 text-sm text-${textcolor} bg-${bgcolor}`}
     >
       {icon && icon}
       <button onClick={handleClick}>
