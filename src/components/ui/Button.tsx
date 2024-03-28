@@ -2,21 +2,23 @@
 
 type Props = {
   text: string;
-  bgcolor: string;
   size: "small" | "normal" | "big";
+  bgcolor?: string;
+  disabled?: boolean;
   align?: "center" | "left";
   icon?: React.ReactNode;
   textcolor?: string;
   onClick?: () => void;
 };
 export function Button({
-  text,
-  bgcolor,
-  icon,
-  textcolor,
-  align = "center",
-  size,
   onClick,
+  text,
+  icon,
+  bgcolor = "accents-0",
+  textcolor = "black",
+  size,
+  align = "center",
+  disabled = true,
 }: Props) {
   const handleClick = () => {
     onClick && onClick();
@@ -26,10 +28,12 @@ export function Button({
 
   return (
     <div
-      className={`flex items-center gap-2 rounded-xl p-4 ${align === "center" ? "justify-center" : "justify-start"} ${sizeClass} bg-${bgcolor} ${textcolor ? `text-${textcolor}` : ""}  `}
+      className={`flex items-center gap-2 rounded-xl p-4  bg-${bgcolor} ${align === "center" ? "justify-center" : "justify-start"} ${sizeClass}  ${textcolor ? `text-${textcolor}` : ""}  `}
     >
       {icon && icon}
-      <button onClick={handleClick}>{text}</button>
+      <button disabled={disabled} onClick={handleClick}>
+        {text}
+      </button>
     </div>
   );
 }
@@ -37,10 +41,10 @@ export function Button({
 function getSizeClass(size: string) {
   switch (size) {
     case "big":
-      return "h-14 w-80";
+      return "h-[59px] w-[343px]";
     case "normal":
-      return "h-12 w-40";
+      return "h-[51px] w-[167px]";
     default:
-      return "h-10 w-32";
+      return "h-[54px] w-[120px]";
   }
 }
