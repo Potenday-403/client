@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 // import { getKakaoToken } from "@/services/kakao";
 // import { useQuery } from "@tanstack/react-query";
