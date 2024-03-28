@@ -1,8 +1,11 @@
-export function Avatar(imageurl: string) {
+type Props = {
+  imageurl: string;
+};
+export function Avatar({ imageurl }: Props) {
   return (
     <div>
       <img
-        className="h-16 w-16 rounded-full object-cover"
+        className="h-12 w-12 rounded-full object-cover"
         alt="userimg"
         src={imageurl}
       />
