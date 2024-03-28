@@ -1,17 +1,19 @@
 "use client";
-import { FriednEventCard } from "@/components/FriednEventCard";
+import { FriednEventCard } from "@/components/FriendEventCard";
 import { FriendCard } from "@/components/FriendCard";
 import { Button } from "@/components/ui/Button";
 import { PlusIcon } from "@/components/ui/icons/PlusIcon";
 import { SearchIcon } from "@/components/ui/icons/SearchIcon";
 import { TrashIcon } from "@/components/ui/icons/TrashIcon";
+import { useRouter } from "next/navigation";
 
 export default function FriednsPage() {
+  const navigation = useRouter();
   return (
     <div className="relative flex min-h-main flex-col bg-blue-200 px-4 pt-[116px]">
       <p className="mb-5 text-2xl font-semibold">친구 목록</p>
       <div className="absolute right-4 top-11 ">
-        <PlusIcon size="24px" />
+        <PlusIcon size="24px" onClick={() => navigation.push("/friends/add")} />
       </div>
 
       <div className="absolute left-7 top-[180px] text-accents-3">
