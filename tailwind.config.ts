@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: [
@@ -40,6 +41,9 @@ const config: Config = {
       minHeight: {
         main: "812px",
       },
+    },
+    fontFamily: {
+      sans: ["var(--font-pretendard)", ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [],
