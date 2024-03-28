@@ -20,7 +20,7 @@ const pretendard = localFont({
     },
 
     {
-      path: "../assets/fonts/Pretendard-Semibold.subset.woff2",
+      path: "../assets/fonts/Pretendard-SemiBold.subset.woff2",
       weight: "600",
       style: "normal",
     },
