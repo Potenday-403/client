@@ -1,4 +1,5 @@
 "use client";
+import { FriednEventCard } from "@/components/FriednEventCard";
 import { FriendCard } from "@/components/FriendCard";
 import { Button } from "@/components/ui/Button";
 import { PlusIcon } from "@/components/ui/icons/PlusIcon";
@@ -23,9 +24,23 @@ export default function FriednsPage() {
       />
 
       <div className="relative mb-5 h-[160px] w-[343px] rounded-lg bg-white px-4 pt-3">
-        <p className="text-2xl font-semibold">다가오는 경조사</p>
-        <div className="flex w-full items-center justify-center pt-10">
+        <p className=" text-2xl font-semibold">다가오는 경조사</p>
+        {/* <div className="flex w-full items-center justify-center pt-10">
           <p>추가된 친구가 없어요</p>
+        </div> */}
+        {/* <div className="flex w-full items-center justify-center pt-10">
+          <p>
+            잊은 경조사는 없으신가요?
+            <br />
+            다가오는 경조사가 없어요
+          </p>
+        </div> */}
+        <div className="mt-3 flex gap-5">
+          <FriednEventCard />
+          <FriednEventCard />
+          <FriednEventCard />
+          <FriednEventCard />
+          <FriednEventCard />
         </div>
         <div className="absolute right-4 top-3 ">
           <TrashIcon size="24px" />
