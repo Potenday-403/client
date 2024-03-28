@@ -8,12 +8,15 @@ import { FamilyButton } from "./ui/FamilyButton";
 import { ChevronUpIcon } from "./ui/icons/ChevronUpIcon";
 import { ChevronDownIcon } from "./ui/icons/ChevronDownIcon";
 import { Badge } from "./ui/Badge";
+import { useRouter } from "next/navigation";
+import { XIcon } from "./ui/icons/XIcon";
 
 export function FriendAddRelationship({
   changeStep,
   changeFriendInfo,
   registerData,
 }: friendaddpage) {
+  const navigation = useRouter();
   const [selectedRelationship, setSelectedRelationship] = useState("");
   const [showFamilyOptions, setShowFamilyOptions] = useState(false);
   const relationshipButtonClick = (relationship: string) => {
@@ -32,6 +35,9 @@ export function FriendAddRelationship({
   const handleBack = () => {
     changeFriendInfo((prv) => ({ ...prv, relationship: "" }));
     changeStep("sex");
+  };
+  const handleClick = () => {
+    navigation.push("/friends");
   };
   console.log(selectedRelationship);
 
@@ -59,6 +65,10 @@ export function FriendAddRelationship({
       <div className="absolute  -top-[60px]">
         <ChevronLeftIcon size="32px" onClick={handleBack} />
       </div>
+      <div className="absolute  -top-[60px] right-0">
+        <XIcon size="32px" onClick={handleClick} />
+      </div>
+
       <div>
         <p className="mb-4 text-[26px] font-semibold">
           친구와의

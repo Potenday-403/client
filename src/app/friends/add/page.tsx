@@ -27,7 +27,7 @@ export default function FiendsAddPage() {
     relationship: "",
   });
   const [step, setStep] = useState<"name" | "age" | "sex" | "relationship">(
-    "relationship",
+    "name",
   );
   console.log(registerData);
   return (

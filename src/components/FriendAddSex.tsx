@@ -4,12 +4,15 @@ import { Button } from "./ui/Button";
 import { useState } from "react";
 import { ChevronLeftIcon } from "./ui/icons/ChevronLeftIcon";
 import { friendaddpage } from "@/app/friends/add/page";
+import { XIcon } from "./ui/icons/XIcon";
+import { useRouter } from "next/navigation";
 
 export function FriendAddSex({
   changeStep,
   changeFriendInfo,
   registerData,
 }: friendaddpage) {
+  const navigation = useRouter();
   const [selectedGender, setSelectedGender] = useState("");
   const handleGenderButtonClick = (sex: string) => {
     setSelectedGender(sex);
@@ -19,11 +22,17 @@ export function FriendAddSex({
     changeFriendInfo((prv) => ({ ...prv, sex: "", age: 0 }));
     changeStep("age");
   };
+  const handleClick = () => {
+    navigation.push("/friends");
+  };
 
   return (
     <div className="relative flex flex-col justify-between">
       <div className="absolute  -top-[60px]">
         <ChevronLeftIcon size="32px" onClick={handleBack} />
+      </div>
+      <div className="absolute  -top-[60px] right-0">
+        <XIcon size="32px" onClick={handleClick} />
       </div>
       <div>
         <p className="mb-4 text-[26px] font-semibold">
