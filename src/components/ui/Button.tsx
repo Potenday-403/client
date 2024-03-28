@@ -25,13 +25,12 @@ export function Button({
   const sizeClass = getSizeClass(size);
 
   return (
-    <button
+    <div
       className={`flex items-center gap-2 rounded-xl p-4 ${align === "center" ? "justify-center" : "justify-start"} ${sizeClass} bg-${bgcolor} ${textcolor ? `text-${textcolor}` : ""}  `}
-      onClick={handleClick}
     >
       {icon && icon}
-      {text}
-    </button>
+      <button onClick={handleClick}>{text}</button>
+    </div>
   );
 }
 

@@ -19,14 +19,13 @@ export function Badge({
   };
 
   return (
-    <>
-      <button
-        className={`flex h-7 items-center gap-1 rounded-3xl px-3  py-3 text-sm bg-${bgcolor}`}
-        onClick={handleClick}
-      >
-        {icon && icon}
-        <p className={`text-${textcolor}`}>{text}</p>
+    <div
+      className={`flex h-7 items-center gap-1 rounded-3xl px-3  py-3 text-sm text-${textcolor} bg-${bgcolor}`}
+    >
+      {icon && icon}
+      <button onClick={handleClick}>
+        <p>{text}</p>
       </button>
-    </>
+    </div>
   );
 }

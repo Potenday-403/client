@@ -14,12 +14,11 @@ export function FamilyButton({
   };
 
   return (
-    <button
+    <div
       className={`flex h-14 w-80 items-center justify-between gap-2 rounded-xl bg-gray-subtle p-4`}
-      onClick={handleClick}
     >
-      가족
+      <button onClick={handleClick}>가족</button>
       {icon && icon}
-    </button>
+    </div>
   );
 }
