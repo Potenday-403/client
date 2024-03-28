@@ -31,7 +31,7 @@ export default function FiendsAddPage() {
   );
   console.log(registerData);
   return (
-    <div className="flex min-h-main bg-blue-200 px-4 pt-[116px]">
+    <div className="flex min-h-main bg-white px-4 pt-[116px]">
       {step === "name" && (
         <FriendAddName
           changeStep={setStep}

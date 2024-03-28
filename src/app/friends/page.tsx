@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 export default function FriednsPage() {
   const navigation = useRouter();
   return (
-    <div className="relative flex min-h-main flex-col bg-blue-200 px-4 pt-[116px]">
+    <div className="relative flex min-h-main flex-col bg-white px-4 pt-[116px]">
       <p className="mb-5 text-2xl font-semibold">친구 목록</p>
       <div className="absolute right-4 top-11 ">
         <PlusIcon size="24px" onClick={() => navigation.push("/friends/add")} />

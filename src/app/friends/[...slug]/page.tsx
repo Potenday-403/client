@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 export default function FriendsDetailPage() {
   const navigation = useRouter();
   return (
-    <div className="relative flex min-h-main flex-col   bg-blue-200 px-4 pt-[116px]">
+    <div className="relative flex min-h-main flex-col bg-white px-4 pt-[116px]">
       <div className="absolute left-2 top-11 ">
         <ChevronLeftIcon
           size="32px"
