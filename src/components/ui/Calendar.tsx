@@ -17,12 +17,14 @@ import {
 // TODO: 아이콘 및 스타일 추가
 
 interface CalendarProps {
+  className?: string;
   selected?: Date;
   onSelect?: (date?: Date) => void;
   disablePastDates?: boolean;
 }
 
 export const Calendar = ({
+  className,
   selected,
   onSelect,
   disablePastDates = false,
@@ -30,6 +32,7 @@ export const Calendar = ({
   return (
     <CalderContext.Provider value={{ disablePastDates }}>
       <DayPicker
+        className={className}
         locale={ko}
         mode="single"
         selected={selected}
@@ -42,25 +45,25 @@ export const Calendar = ({
           Day: Day,
         }}
         classNames={{
-          months: "flex",
+          months: "w-full flex flex-col",
           caption: "flex justify-center relative items-center h-10",
           caption_label:
             "font-semibold absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center",
           nav: "flex items-center rounded-md w-full h-full justify-between border-b",
-          nav_button: "hover:bg-accents-1 rounded-full p-0.5 transition",
+          nav_button: "rounded-full p-0.5 transition",
           nav_button_previous: "!absolute left-2",
           nav_button_next: "!absolute right-2",
+          table: "w-full",
           head_row: "flex w-full",
           head_cell:
-            "w-[49px] h-[38px] text-accents-2 font-normal m-0 flex items-center justify-center p-0",
+            "w-full h-[38px] text-accents-2 font-normal m-0 flex items-center justify-center p-0",
           row: "flex w-full mt-2 border-b",
           cell: "relative rounded-md p-0 text-center focus-within:relative w-full h-[70px]",
           day: cn(
             "h-8 w-8 rounded-full p-0 text-center outline-none transition-all",
-            "hover:bg-accents-1",
             "focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-50",
           ),
-          day_today: "bg-red text-white hover:bg-red hover:text-white",
+          day_today: "bg-primary text-white",
           day_outside: "text-accents-4 aria-selected:text-white",
           day_disabled: "text-accents-4 pointer-events-none bg-accents-5",
           day_hidden: "invisible",
@@ -126,8 +129,9 @@ const isPastDate = (date: Date) => {
 const formatCaption: DateFormatter = (date) => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
+  const day = date.getDate();
 
-  const formattedDate = `${year}년, ${month}월`;
+  const formattedDate = `${year}년, ${month}월 ${day}일`;
 
   return formattedDate;
 };
