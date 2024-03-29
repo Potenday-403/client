@@ -1,31 +1,57 @@
-"use client";
+import { cn } from "@/utils/cn";
+import { Slot } from "@radix-ui/react-slot";
+import { VariantProps, cva } from "class-variance-authority";
+import React from "react";
 
-type Props = {
-  bgcolor: string;
-  textcolor?: string;
-  text: string;
-  icon?: React.ReactNode;
-  onClick?: () => void;
-};
-export function Badge({
-  icon,
-  text,
-  textcolor = "black",
-  bgcolor,
-  onClick,
-}: Props) {
-  const handleClick = () => {
-    onClick && onClick();
-  };
+const badgeVariants = cva(
+  cn(
+    "inline-flex items-center justify-center whitespace-nowrap px-2.5 py-1 rounded-full font-medium text-sm",
+  ),
+  {
+    variants: {
+      variant: {
+        primary: "bg-primary text-white",
+        red: "bg-red-light text-red",
+        yellow: "bg-yellow-light text-yellow",
+        green: "bg-green-light text-green",
+        gray: "bg-gray-subtle text-bluegray",
+        white: "bg-white text-bluegray",
+      },
+    },
+    defaultVariants: {
+      variant: "gray",
+    },
+  },
+);
 
-  return (
-    <div
-      className={`inline-flex h-7 items-center gap-1 rounded-3xl px-3  py-3 text-sm text-${textcolor} bg-${bgcolor}`}
-    >
-      {icon && icon}
-      <button onClick={handleClick}>
-        <p>{text}</p>
-      </button>
-    </div>
-  );
+interface BadgeProps
+  extends React.ComponentPropsWithoutRef<"div">,
+    VariantProps<typeof badgeVariants> {
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
 }
+
+export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
+  (
+    { variant, startIcon, endIcon, children, className, onClick, ...props },
+    ref,
+  ) => {
+    return (
+      <div
+        className={cn(
+          badgeVariants({ variant, className }),
+          onClick && "cursor-pointer",
+        )}
+        {...props}
+        ref={ref}
+        role={onClick ? "button" : undefined}
+      >
+        {startIcon && <Slot className="mr-1 w-5">{startIcon}</Slot>}
+        {children}
+        {endIcon}
+      </div>
+    );
+  },
+);
+
+Badge.displayName = "Badge";

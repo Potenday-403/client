@@ -46,14 +46,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={pretendard.variable}>
-      <body className="mx-auto flex min-w-main max-w-main items-center bg-black">
+      <body className="mx-auto flex max-w-main items-center bg-black">
         <Script
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.1/kakao.min.js"
           integrity={process.env.NEXT_PUBLIC_KAKAO_INTERGRITY}
           crossOrigin="anonymous"
         ></Script>
         <Providers>
-          <main className="max-h-main min-h-main w-full">
+          <main className="min-h-screen w-full border-2 bg-white">
             <Suspense>{children}</Suspense>
           </main>
         </Providers>

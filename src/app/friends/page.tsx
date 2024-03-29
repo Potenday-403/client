@@ -2,22 +2,24 @@
 import { FriednEventCard } from "@/components/FriendEventCard";
 import { FriendCard } from "@/components/FriendCard";
 import { Button } from "@/components/ui/Button";
-import { PlusIcon } from "@/components/ui/icons/PlusIcon";
-import { SearchIcon } from "@/components/ui/icons/SearchIcon";
-import { TrashIcon } from "@/components/ui/icons/TrashIcon";
 import { useRouter } from "next/navigation";
+import { PlusIcon, SearchIcon, TrashIcon } from "@/components/ui/Icon";
+import { IconButton } from "@/components/ui/IconButton";
 
 export default function FriednsPage() {
   const navigation = useRouter();
+
   return (
-    <div className="relative flex min-h-main flex-col bg-white px-4 pt-[116px]">
+    <div className="min-h-main relative flex flex-col bg-white px-4 pt-[116px]">
       <p className="mb-5 text-2xl font-semibold">친구 목록</p>
       <div className="absolute right-4 top-11 ">
-        <PlusIcon size="24px" onClick={() => navigation.push("/friends/add")} />
+        <IconButton onClick={() => navigation.push("/friends/add")}>
+          <PlusIcon />
+        </IconButton>
       </div>
 
       <div className="absolute left-7 top-[180px] text-accents-3">
-        <SearchIcon size="24px" />
+        <SearchIcon className="w-6" />
       </div>
 
       <input
@@ -44,7 +46,7 @@ export default function FriednsPage() {
           <FriednEventCard />
           <FriednEventCard />
         </div>
-        <div className="absolute right-4 top-3 ">
+        <div className="absolute right-4 top-3">
           <TrashIcon size="24px" />
         </div>
       </div>

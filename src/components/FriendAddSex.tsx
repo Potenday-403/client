@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "./ui/Button";
+import { Button } from "@/components/ui/Button";
 import { useState } from "react";
-import { ChevronLeftIcon } from "./ui/icons/ChevronLeftIcon";
+import { ChevronLeftIcon, XIcon } from "@/components/ui/Icon";
 import { friendaddpage } from "@/app/friends/add/page";
-import { XIcon } from "./ui/icons/XIcon";
 import { useRouter } from "next/navigation";
+import { IconButton } from "./ui/IconButton";
 
 export function FriendAddSex({
   changeStep,
@@ -28,11 +28,15 @@ export function FriendAddSex({
 
   return (
     <div className="relative flex flex-col justify-between">
-      <div className="absolute  -top-[60px]">
-        <ChevronLeftIcon size="32px" onClick={handleBack} />
+      <div className="absolute -top-[60px]">
+        <IconButton size="large" onClick={handleBack}>
+          <ChevronLeftIcon />
+        </IconButton>
       </div>
-      <div className="absolute  -top-[60px] right-0">
-        <XIcon size="32px" onClick={handleClick} />
+      <div className="absolute -top-[60px] right-0">
+        <IconButton size="large" onClick={handleClick}>
+          <XIcon />
+        </IconButton>
       </div>
       <div>
         <p className="mb-4 text-[26px] font-semibold">
@@ -45,38 +49,32 @@ export function FriendAddSex({
         </p>
         <div className="flex justify-between ">
           <Button
-            text="남성"
-            textcolor={selectedGender === "male" ? "white" : "black"}
-            bgcolor={selectedGender === "male" ? "primary" : "accents-0"}
-            size="normal"
-            disabled={false}
             onClick={() => {
               handleGenderButtonClick("male");
             }}
-          />
+          >
+            남성
+          </Button>
           <Button
-            text="여성"
-            textcolor={selectedGender === "female" ? "white" : "black"}
-            bgcolor={selectedGender === "female" ? "primary" : "accents-0"}
-            size="normal"
-            disabled={false}
             onClick={() => {
               handleGenderButtonClick("female");
             }}
-          />
+          >
+            여성
+          </Button>
         </div>
       </div>
       <div className="mb-14">
         <Button
-          disabled={selectedGender !== "" ? false : true}
-          bgcolor={selectedGender !== "" ? "primary" : "accents-0"}
-          textcolor={selectedGender !== "" ? "white" : "black"}
-          text="다음"
-          size="big"
+          variant="primary"
+          disabled={selectedGender.length === 0}
+          size="large"
           onClick={() => {
             changeStep("relationship");
           }}
-        />
+        >
+          다음
+        </Button>
       </div>
     </div>
   );

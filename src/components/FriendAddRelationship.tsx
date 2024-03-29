@@ -1,15 +1,14 @@
 "use client";
 
-import { Button } from "./ui/Button";
+import { Button } from "@/components/ui/Button";
 import { useState } from "react";
-import { ChevronLeftIcon } from "./ui/icons/ChevronLeftIcon";
 import { friendaddpage } from "@/app/friends/add/page";
-import { FamilyButton } from "./ui/FamilyButton";
-import { ChevronUpIcon } from "./ui/icons/ChevronUpIcon";
-import { ChevronDownIcon } from "./ui/icons/ChevronDownIcon";
-import { Badge } from "./ui/Badge";
+import { FamilyButton } from "@/components/ui/FamilyButton";
+import { Badge } from "@/components/ui/Badge";
 import { useRouter } from "next/navigation";
-import { XIcon } from "./ui/icons/XIcon";
+import { ChevronLeftIcon } from "lucide-react";
+import { IconButton } from "@/components/ui/IconButton";
+import { XIcon, ChevronUpIcon, ChevronDownIcon } from "@/components/ui/Icon";
 
 export function FriendAddRelationship({
   changeStep,
@@ -63,10 +62,14 @@ export function FriendAddRelationship({
   return (
     <div className="relative flex flex-col justify-between">
       <div className="absolute  -top-[60px]">
-        <ChevronLeftIcon size="32px" onClick={handleBack} />
+        <IconButton size="large" onClick={handleBack}>
+          <ChevronLeftIcon />
+        </IconButton>
       </div>
       <div className="absolute  -top-[60px] right-0">
-        <XIcon size="32px" onClick={handleClick} />
+        <IconButton size="large" onClick={handleClick}>
+          <XIcon />
+        </IconButton>
       </div>
 
       <div>
@@ -109,20 +112,21 @@ export function FriendAddRelationship({
               )}
               {button.value === "house" && showFamilyOptions && (
                 <div className="-mt-3 flex min-h-28 flex-wrap gap-3 rounded-lg bg-accents-0 px-4">
-                  {familyOptions.map((familyOption, j) => (
+                  {familyOptions.map((familyOption, i) => (
                     <Badge
-                      key={j}
-                      bgcolor={
+                      key={i}
+                      variant={
                         selectedRelationship === familyOption.value
                           ? "primary"
                           : "white"
                       }
-                      text={familyOption.text}
                       onClick={() => {
                         relationshipButtonClick(familyOption.value);
                         setShowFamilyOptions(true);
                       }}
-                    />
+                    >
+                      {familyOption.text}
+                    </Badge>
                   ))}
                 </div>
               )}
@@ -148,13 +152,12 @@ export function FriendAddRelationship({
       </div>
       <div className="mb-10">
         <Button
-          disabled={selectedRelationship !== "" ? false : true}
-          bgcolor={selectedRelationship !== "" ? "primary" : "accents-0"}
-          textcolor={selectedRelationship !== "" ? "white" : "black"}
-          text="다음"
-          size="big"
-          onClick={() => {}}
-        />
+          variant="primary"
+          size="large"
+          disabled={selectedRelationship.length === 0}
+        >
+          다음
+        </Button>
       </div>
     </div>
   );

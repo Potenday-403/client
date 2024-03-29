@@ -1,6 +1,5 @@
-import { Badge } from "./ui/Badge";
-import { MoveLeftIcon } from "./ui/icons/MoveLeftIcon";
-import { MoveRightIcon } from "./ui/icons/MoveRightIcon";
+import { Badge } from "@/components/ui/Badge";
+import { MoveRightIcon } from "@/components/ui/Icon";
 
 export function WithCard() {
   return (
@@ -11,12 +10,12 @@ export function WithCard() {
       </div>
       <div className="ml-4 w-full rounded-lg bg-accents-0 pl-4 pt-3">
         <Badge
-          bgcolor="white"
-          text="김밤비님으로부터"
-          textcolor="primary"
-          icon={<MoveLeftIcon></MoveLeftIcon>}
-          // icon={<MoveRightIcon></MoveRightIcon>}
-        />
+          className="text-primary"
+          variant="white"
+          startIcon={<MoveRightIcon />}
+        >
+          김밤비님으로부터
+        </Badge>
         <p>김인간 생일</p>
         <p>오마카세 150,000원</p>
       </div>

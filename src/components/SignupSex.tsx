@@ -1,8 +1,8 @@
 "use clinet";
 import { signuppage } from "@/app/signup/page";
-import { Button } from "./ui/Button";
+import { Button } from "@/components/ui/Button";
 import { useState } from "react";
-import { ChevronLeftIcon } from "./ui/icons/ChevronLeftIcon";
+import { ChevronLeftIcon } from "@/components/ui/Icon";
 
 export function SignupSex({
   changeStep,
@@ -20,7 +20,7 @@ export function SignupSex({
   };
 
   return (
-    <div className="relative flex flex-col justify-between">
+    <div className="relative flex w-full flex-col justify-between">
       <div className="absolute  -top-[60px]">
         <ChevronLeftIcon size="32px" onClick={handleBack} />
       </div>
@@ -33,41 +33,35 @@ export function SignupSex({
         <p className="mb-[54px] text-lg font-medium text-accents-4">
           경조사비 통계에 이용돼요
         </p>
-        <div className="flex justify-between ">
+        <div className="flex justify-between gap-[10px]">
           <Button
-            text="남성"
-            textcolor={selectedGender === "male" ? "white" : "black"}
-            bgcolor={selectedGender === "male" ? "primary" : "accents-0"}
-            size="normal"
-            disabled={false}
+            variant={selectedGender === "male" ? "primary" : "default"}
             onClick={() => {
               handleGenderButtonClick("male");
             }}
-          />
+          >
+            남성
+          </Button>
           <Button
-            text="여성"
-            textcolor={selectedGender === "female" ? "white" : "black"}
-            bgcolor={selectedGender === "female" ? "primary" : "accents-0"}
-            size="normal"
-            disabled={false}
+            variant={selectedGender === "female" ? "primary" : "default"}
             onClick={() => {
               handleGenderButtonClick("female");
             }}
-          />
+          >
+            여성
+          </Button>
         </div>
       </div>
-      <div className="mb-14">
-        <Button
-          disabled={selectedGender !== "" ? false : true}
-          bgcolor={selectedGender !== "" ? "primary" : "accents-0"}
-          textcolor={selectedGender !== "" ? "white" : "black"}
-          text="다음"
-          size="big"
-          onClick={() => {
-            changeStep("job");
-          }}
-        />
-      </div>
+      <Button
+        className="mb-14"
+        disabled={!selectedGender}
+        size="large"
+        onClick={() => {
+          changeStep("job");
+        }}
+      >
+        다음
+      </Button>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 "use client";
+
 import { signuppage } from "@/app/signup/page";
-import { Button } from "./ui/Button";
+import { Button } from "@/components/ui/Button";
 import { useState } from "react";
-import { ChevronLeftIcon } from "./ui/icons/ChevronLeftIcon";
+import { ChevronLeftIcon } from "@/components/ui/Icon";
+import { IconButton } from "@/components/ui/IconButton";
 
 export function SignupJob({
   changeStep,
@@ -32,7 +34,9 @@ export function SignupJob({
   return (
     <div className="relative flex flex-col justify-between">
       <div className="absolute  -top-[60px]">
-        <ChevronLeftIcon size="32px" onClick={handleBack} />
+        <IconButton size="large" onClick={handleBack}>
+          <ChevronLeftIcon />
+        </IconButton>
       </div>
       <div>
         <p className="mb-4 text-[26px] font-semibold">
@@ -45,27 +49,20 @@ export function SignupJob({
         </p>
         <div className="flex flex-wrap justify-between gap-2 ">
           {buttonsData.map((button, i) => (
-            <Button
-              key={i}
-              text={button.text}
-              textcolor={selectedJob === button.value ? "white" : "black"}
-              bgcolor={selectedJob === button.value ? "primary" : "accents-0"}
-              size="normal"
-              disabled={false}
-              onClick={() => handleJobButtonClick(button.value)}
-            />
+            <Button key={i} onClick={() => handleJobButtonClick(button.value)}>
+              {button.text}
+            </Button>
           ))}
         </div>
       </div>
       <div className="mb-14">
         <Button
-          disabled={selectedJob !== "" ? false : true}
-          bgcolor={selectedJob !== "" ? "primary" : "accents-0"}
-          textcolor={selectedJob !== "" ? "white" : "black"}
-          text="다음"
-          size="big"
-          onClick={() => {}}
-        />
+          variant="primary"
+          size="large"
+          disabled={selectedJob.length === 0}
+        >
+          다음
+        </Button>
       </div>
     </div>
   );
