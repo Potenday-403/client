@@ -1,3 +1,4 @@
+import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Title } from "@/components/ui/Title";
@@ -18,14 +19,11 @@ export const EventAddName = () => {
           />
         </div>
       </div>
-      <Button
-        variant="primary"
-        className="sticky bottom-5 left-4 right-4"
-        disabled={!name}
-        onClick={moveToNext}
-      >
-        다음
-      </Button>
+      <CTAContainer>
+        <Button variant="primary" disabled={!name} onClick={moveToNext}>
+          다음
+        </Button>
+      </CTAContainer>
     </div>
   );
 };

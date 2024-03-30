@@ -1,3 +1,4 @@
+import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Button } from "@/components/ui/Button";
 import { Calendar } from "@/components/ui/Calendar";
 import { Title } from "@/components/ui/Title";
@@ -21,14 +22,15 @@ export const EventAddDate = () => {
           />
         </div>
       </div>
-      <Button
-        variant="primary"
-        className="sticky bottom-5 left-4 right-4"
-        disabled={!date || !time}
-        onClick={moveToNext}
-      >
-        다음
-      </Button>
+      <CTAContainer>
+        <Button
+          variant="primary"
+          disabled={!date || !time}
+          onClick={moveToNext}
+        >
+          다음
+        </Button>
+      </CTAContainer>
     </div>
   );
 };

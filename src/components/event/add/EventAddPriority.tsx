@@ -1,3 +1,4 @@
+import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Button } from "@/components/ui/Button";
 import { Subtitle } from "@/components/ui/Subtitle";
 import { Title } from "@/components/ui/Title";
@@ -41,14 +42,11 @@ export const EventAddPriority = () => {
           ))}
         </div>
       </div>
-      <Button
-        variant="primary"
-        className="sticky bottom-5 left-4 right-4"
-        disabled={!priority}
-        onClick={moveToNext}
-      >
-        다음
-      </Button>
+      <CTAContainer>
+        <Button variant="primary" disabled={!priority} onClick={moveToNext}>
+          다음
+        </Button>
+      </CTAContainer>
     </div>
   );
 };

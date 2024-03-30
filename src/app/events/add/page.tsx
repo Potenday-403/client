@@ -18,7 +18,7 @@ export default function EventAddPage() {
   const canMoveToPrevious = step !== "type";
 
   return (
-    <main className="flex h-full flex-col px-4 pt-11">
+    <main className="flex flex-col px-4 pb-4 pt-11">
       <div
         className={cn(
           "flex justify-between",

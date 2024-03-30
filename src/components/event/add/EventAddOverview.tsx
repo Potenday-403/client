@@ -1,4 +1,5 @@
 import { PriorityBadge } from "@/components/PriorityBadge";
+import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -50,14 +51,11 @@ export const EventAddOverview = () => {
           </Card.Content>
         </Card>
       </div>
-      <Button
-        variant="primary"
-        className="sticky bottom-5 left-4 right-4"
-        disabled={!priority}
-        onClick={onConfirm}
-      >
-        다음
-      </Button>
+      <CTAContainer>
+        <Button variant="primary" disabled={!priority} onClick={onConfirm}>
+          다음
+        </Button>
+      </CTAContainer>
     </div>
   );
 };

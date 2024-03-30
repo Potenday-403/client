@@ -1,3 +1,4 @@
+import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Button } from "@/components/ui/Button";
 import { Title } from "@/components/ui/Title";
 import { EVENT_TYPE_LABEL } from "@/models/shared";
@@ -28,14 +29,11 @@ export const EventAddType = () => {
           ))}
         </div>
       </div>
-      <Button
-        variant="primary"
-        className="sticky bottom-5 left-4 right-4"
-        disabled={!eventType}
-        onClick={moveToNext}
-      >
-        다음
-      </Button>
+      <CTAContainer>
+        <Button variant="primary" disabled={!eventType} onClick={moveToNext}>
+          다음
+        </Button>
+      </CTAContainer>
     </div>
   );
 };
