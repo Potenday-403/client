@@ -1,12 +1,12 @@
 import { cn } from "@/utils/cn";
 import React from "react";
 
-interface SubtitleProps extends React.ComponentPropsWithoutRef<"h2"> {}
+interface SubtitleProps extends React.ComponentPropsWithoutRef<"p"> {}
 
 export const Subtitle = React.forwardRef<HTMLHeadingElement, SubtitleProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <h2
+      <p
         className={cn(
           "mt-2 whitespace-pre-wrap text-[18px] font-medium text-accents-4",
           className,
@@ -15,7 +15,7 @@ export const Subtitle = React.forwardRef<HTMLHeadingElement, SubtitleProps>(
         {...props}
       >
         {children}
-      </h2>
+      </p>
     );
   },
 );
