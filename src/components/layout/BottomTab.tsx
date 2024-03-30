@@ -12,12 +12,7 @@ import { Slot } from "@radix-ui/react-slot";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const bottomTabRoutes = [
-  "/",
-  "/greetings/recommend",
-  "/friends",
-  "/statistics",
-];
+const bottomTabRoutes = ["/", "/friends", "/statistics"];
 
 type NavItem = {
   label: string;
