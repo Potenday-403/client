@@ -1,12 +1,12 @@
 "use client";
 
-import { EventAddComplete } from "@/components/event/add/EventAddComplete";
-import { EventAddDate } from "@/components/event/add/EventAddDate";
-import { EventAddFriend } from "@/components/event/add/EventAddFriend";
-import { EventAddName } from "@/components/event/add/EventAddName";
-import { EventAddOverview } from "@/components/event/add/EventAddOverview";
-import { EventAddPriority } from "@/components/event/add/EventAddPriority";
-import { EventAddType } from "@/components/event/add/EventAddType";
+import { EventAddComplete } from "@/components/event/add-funnel/EventAddComplete";
+import { EventAddDate } from "@/components/event/add-funnel/EventAddDate";
+import { EventAddFriend } from "@/components/event/add-funnel/EventAddFriend";
+import { EventAddName } from "@/components/event/add-funnel/EventAddName";
+import { EventAddOverview } from "@/components/event/add-funnel/EventAddOverview";
+import { EventAddPriority } from "@/components/event/add-funnel/EventAddPriority";
+import { EventAddType } from "@/components/event/add-funnel/EventAddType";
 import { ChevronLeftIcon, XIcon } from "@/components/ui/Icon";
 import { IconButton } from "@/components/ui/IconButton";
 import {

@@ -3,7 +3,7 @@ import { GreetingsRecommendForm } from "@/components/greetings/recommend-funnel/
 import { GreetingsRecommendResult } from "@/components/greetings/recommend-funnel/GreetingsRecommendResult";
 import { GreetingsRecommendFunnelContextProvider } from "@/store/greetings-recommend-funnel";
 
-export default function RecommendPage() {
+export default function GreetingsRecommendPage() {
   return (
     <GreetingsRecommendFunnelContextProvider>
       <GreetingsRecommendForm />

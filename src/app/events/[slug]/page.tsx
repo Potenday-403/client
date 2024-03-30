@@ -3,6 +3,7 @@
 import { PriorityBadge } from "@/components/PriorityBadge";
 import { WithCard } from "@/components/WithCard";
 import { ChatBubble } from "@/components/event/detail/ChatBubble";
+import { Header } from "@/components/layout/Header";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Divider } from "@/components/ui/Divider";
@@ -45,11 +46,11 @@ export default function EventDetailPage() {
   return (
     <main>
       <div className="px-4">
-        <div className="flex h-[52px] items-center justify-end">
+        <Header className="justify-end">
           <IconButton onClick={() => router.push("/")} size="large">
             <XIcon />
           </IconButton>
-        </div>
+        </Header>
         <div className="flex items-center">
           <p className="mr-[10px] text-[32px] font-bold">
             D-{getDaysLeft(new Date(event.scheduledAt))}
