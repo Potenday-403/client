@@ -1,10 +1,10 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
 import { Providers } from "@/hooks/provider";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
 import Script from "next/script";
 import { Suspense } from "react";
-import localFont from "next/font/local";
 
 const pretendard = localFont({
   src: [
@@ -46,14 +46,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={pretendard.variable}>
-      <body className="mx-auto flex max-w-main items-center bg-black">
+      <body className="mx-auto flex max-w-main items-center overflow-hidden bg-black">
         <Script
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.1/kakao.min.js"
           integrity={process.env.NEXT_PUBLIC_KAKAO_INTERGRITY}
           crossOrigin="anonymous"
         ></Script>
         <Providers>
-          <main className="min-h-screen w-full border-2 bg-white">
+          <main className="relative h-screen w-full overflow-y-auto bg-white">
             <Suspense>{children}</Suspense>
           </main>
         </Providers>
