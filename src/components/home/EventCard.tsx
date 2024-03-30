@@ -39,9 +39,8 @@ export const EventCard = ({
                 <PriorityBadge priority={priority} />
               </div>
               <div className="flex w-full">
-                <div className="flex flex-col">
+                <div className="mt-4 flex flex-col">
                   <p className="text-left text-[20px] font-bold">{name}</p>
-
                   <p className="flex items-center text-sm font-medium text-[#8A8A8A]">
                     <Clock2Icon className="mr-0.5 h-[14px] w-[14px]" />
                     {format(date, "aaaa hh:mm yyyy.MM.dd", { locale: ko })}
