@@ -13,7 +13,7 @@ import { useCalendar } from "@/hooks/useCalender";
 import { useCheckboxGroup } from "@/hooks/useCheckboxGroup";
 import { Reminder } from "@/models/reminder";
 import { PRIORITY } from "@/models/shared";
-import { isIn10DaysFromNow } from "@/utils/cn";
+import { isIn10DaysFromNow } from "@/utils/date";
 import { format, isSameDay } from "date-fns";
 import { ko } from "date-fns/locale";
 

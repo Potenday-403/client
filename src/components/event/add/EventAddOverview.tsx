@@ -3,6 +3,7 @@ import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { Divider } from "@/components/ui/Divider";
 import { CalendarIcon, Clock2Icon } from "@/components/ui/Icon";
 import { Title } from "@/components/ui/Title";
 import { EVENT_TYPE_LABEL } from "@/models/shared";
@@ -37,7 +38,7 @@ export const EventAddOverview = () => {
                 {time}
               </p>
             </div>
-            <hr className="mt-3" />
+            <Divider className="mt-3" />
             <div className="mt-5 flex items-center">
               <p className="mr-8 font-medium">이벤트 종류</p>
               <Badge>
