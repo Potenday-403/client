@@ -1,3 +1,4 @@
+import { BottomTab } from "@/components/layout/BottomTab";
 import "./globals.css";
 
 import { Providers } from "@/hooks/provider";
@@ -46,16 +47,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={pretendard.variable}>
-      <body className="mx-auto flex max-w-main items-center overflow-hidden bg-black">
+      <body className="mx-auto max-w-main bg-gray-100">
         <Script
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.1/kakao.min.js"
           integrity={process.env.NEXT_PUBLIC_KAKAO_INTERGRITY}
           crossOrigin="anonymous"
         ></Script>
         <Providers>
-          <main className="relative h-screen w-full overflow-y-auto bg-white">
+          <div className="flex min-h-screen w-full flex-col bg-white">
             <Suspense>{children}</Suspense>
-          </main>
+            <BottomTab />
+          </div>
         </Providers>
       </body>
     </html>

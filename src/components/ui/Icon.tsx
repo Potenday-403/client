@@ -28,6 +28,7 @@ import {
   Trash2Icon,
   TrashIcon,
   UserIcon,
+  UserSquare2Icon,
   XIcon,
 } from "lucide-react";
 
@@ -151,5 +152,6 @@ export {
   Trash2Icon,
   TrashIcon,
   UserIcon,
+  UserSquare2Icon,
   XIcon,
 };
