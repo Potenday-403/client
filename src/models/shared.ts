@@ -14,6 +14,13 @@ export const PRIORITY = {
 
 export type Priority = (typeof PRIORITY)[keyof typeof PRIORITY];
 
+export const PRIORITY_LABEL: Record<Priority, string> = {
+  CRUCIAL: "매우 중요",
+  IMPORTANT: "중요",
+  HIGH: "높음",
+  NORMAL: "보통",
+} as const;
+
 /**
  * YYYY-MM-DD 형식의 날짜 문자열
  */
