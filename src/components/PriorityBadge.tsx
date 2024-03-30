@@ -5,7 +5,6 @@ import { Badge } from "./ui/Badge";
 const badgeVariant = {
   [PRIORITY.CRUCIAL]: "red",
   [PRIORITY.IMPORTANT]: "yellow",
-  [PRIORITY.HIGH]: "yellow",
   [PRIORITY.NORMAL]: "green",
 } as const;
 
