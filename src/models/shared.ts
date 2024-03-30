@@ -1,3 +1,10 @@
+export const RELATIONSHIP = {
+  // TODO: 항목 추가
+  CLOSE_FRIEND: "CLOSE_FRIEND",
+} as const;
+
+export type Relationship = (typeof RELATIONSHIP)[keyof typeof RELATIONSHIP];
+
 export const EVENT_TYPE = {
   BIRTHDAY: "BIRTHDAY",
   WEDDING: "WEDDING",
