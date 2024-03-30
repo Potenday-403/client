@@ -1,6 +1,9 @@
 export const EVENT_TYPE = {
   BIRTHDAY: "BIRTHDAY",
   WEDDING: "WEDDING",
+  FIRST_BIRTHDAY: "FIRST_BIRTHDAY",
+  FUNERAL: "FUNERAL",
+  ETC: "ETC",
 } as const;
 
 export type EventType = (typeof EVENT_TYPE)[keyof typeof EVENT_TYPE];
@@ -8,7 +11,6 @@ export type EventType = (typeof EVENT_TYPE)[keyof typeof EVENT_TYPE];
 export const PRIORITY = {
   CRUCIAL: "CRUCIAL",
   IMPORTANT: "IMPORTANT",
-  HIGH: "HIGH",
   NORMAL: "NORMAL",
 } as const;
 
@@ -17,7 +19,6 @@ export type Priority = (typeof PRIORITY)[keyof typeof PRIORITY];
 export const PRIORITY_LABEL: Record<Priority, string> = {
   CRUCIAL: "매우 중요",
   IMPORTANT: "중요",
-  HIGH: "높음",
   NORMAL: "보통",
 } as const;
 
