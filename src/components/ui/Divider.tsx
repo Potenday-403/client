@@ -1,14 +1,29 @@
 import { cn } from "@/utils/cn";
+import { VariantProps, cva } from "class-variance-authority";
 import React from "react";
 
-interface DividerProps extends React.ComponentPropsWithoutRef<"hr"> {}
+const dividerVariants = cva(cn(""), {
+  variants: {
+    variant: {
+      line: "border-t border-accents-1",
+      space: "h-2 bg-accents-1",
+    },
+  },
+  defaultVariants: {
+    variant: "line",
+  },
+});
+
+interface DividerProps
+  extends React.ComponentPropsWithoutRef<"hr">,
+    VariantProps<typeof dividerVariants> {}
 
 export const Divider = React.forwardRef<HTMLHRElement, DividerProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, variant, ...props }, ref) => {
     return (
       <hr
         ref={ref}
-        className={cn("border-t border-accents-1", className)}
+        className={cn(dividerVariants({ variant, className }))}
         {...props}
       />
     );
