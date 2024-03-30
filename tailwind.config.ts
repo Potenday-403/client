@@ -16,7 +16,7 @@ const config: Config = {
         "accents-3": "#AEAEB2",
         "accents-2": "#BBBBBB",
         "accents-1": "#E5E5E5",
-        "accents-0": "#F5F5F5",
+        "accents-0": "#F2F4F7",
         red: "#D04354",
         yellow: "#B54708",
         green: "#039855",
