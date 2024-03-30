@@ -1,5 +1,6 @@
 import { Event } from "@/models/event";
 import { api } from "@/services/axios";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const ENDPOINT = "/events";
 
@@ -35,3 +36,55 @@ interface CreateEventApiBody {
 }
 
 type UpdateEventApiBody = Partial<CreateEventApiBody>;
+
+const queryKeys = {
+  all: () => [ENDPOINT],
+  list: () => [ENDPOINT, "list"],
+  detail: (id: string) => [ENDPOINT, id],
+};
+
+export const useEventDetail = (id: string) => {
+  return useQuery({
+    queryKey: queryKeys.detail(id),
+    queryFn: () => eventApi.getEventById(id),
+  });
+};
+
+export const useCreateEvent = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: eventApi.createEvent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.list(),
+      });
+    },
+  });
+};
+
+export const useUpdateEvent = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: eventApi.updateEvent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.all(),
+      });
+    },
+  });
+};
+
+export const useDeleteEvent = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: eventApi.deleteEvent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.all(),
+      });
+    },
+  });
+};
