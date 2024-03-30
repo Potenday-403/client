@@ -54,7 +54,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         ></Script>
         <Providers>
-          <div className="flex min-h-screen w-full flex-col bg-white">
+          <div className="flex min-h-screen w-full flex-col bg-white pb-[92px]">
             <Suspense>{children}</Suspense>
             <BottomTab />
           </div>

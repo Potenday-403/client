@@ -45,7 +45,7 @@ export default function EventDetailPage() {
   return (
     <main>
       <div className="px-4">
-        <div className="flex h-11 items-center justify-end">
+        <div className="flex h-[52px] items-center justify-end">
           <IconButton onClick={() => router.push("/")} size="large">
             <XIcon />
           </IconButton>
