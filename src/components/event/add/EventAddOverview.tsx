@@ -1,0 +1,63 @@
+import { PriorityBadge } from "@/components/PriorityBadge";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { CalendarIcon, Clock2Icon } from "@/components/ui/Icon";
+import { Title } from "@/components/ui/Title";
+import { EVENT_TYPE_LABEL } from "@/models/shared";
+import { useEventAddFunnelStore } from "@/store/event";
+import { format } from "date-fns";
+
+export const EventAddOverview = () => {
+  const { eventType, name, time, date, priority, moveToNext } =
+    useEventAddFunnelStore();
+
+  const onConfirm = async () => {
+    // TODO: 경조사 추가
+    moveToNext();
+  };
+
+  return (
+    <div className="mt-5 flex flex-1 flex-col justify-between">
+      <div>
+        <Title className="text-[26px]">경조사 등록 전 확인해주세요</Title>
+        <Card className="mt-10">
+          <Card.Content>
+            <p className="text-[20px] font-semibold text-accents-5">{name}</p>
+            <div className="mt-[18px] flex gap-4 font-medium text-accents-5">
+              {date && (
+                <p className="flex items-center">
+                  <CalendarIcon className="mr-2 w-5" />
+                  {format(date, "yyyy.MM.dd")}
+                </p>
+              )}
+              <p className="flex items-center">
+                <Clock2Icon className="mr-2 w-5" />
+                {time}
+              </p>
+            </div>
+            <hr className="mt-3" />
+            <div className="mt-5 flex items-center">
+              <p className="mr-8 font-medium">이벤트 종류</p>
+              <Badge>
+                {EVENT_TYPE_LABEL[eventType as keyof typeof EVENT_TYPE_LABEL]}
+              </Badge>
+            </div>
+            <div className="mt-5 flex items-center">
+              <p className="mr-8 font-medium">이벤트 중요도</p>
+              {priority && <PriorityBadge priority={priority} />}
+            </div>
+          </Card.Content>
+        </Card>
+      </div>
+      <Button
+        variant="primary"
+        className="sticky bottom-5 left-4 right-4"
+        disabled={!priority}
+        onClick={onConfirm}
+      >
+        다음
+      </Button>
+    </div>
+  );
+};
