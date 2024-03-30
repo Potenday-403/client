@@ -8,6 +8,14 @@ export const EVENT_TYPE = {
 
 export type EventType = (typeof EVENT_TYPE)[keyof typeof EVENT_TYPE];
 
+export const EVENT_TYPE_LABEL: Record<EventType, string> = {
+  BIRTHDAY: "생일",
+  WEDDING: "결혼식",
+  FIRST_BIRTHDAY: "돌잔치",
+  FUNERAL: "장례식",
+  ETC: "기타행사",
+} as const;
+
 export const PRIORITY = {
   CRUCIAL: "CRUCIAL",
   IMPORTANT: "IMPORTANT",
