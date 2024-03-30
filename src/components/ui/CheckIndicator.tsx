@@ -13,13 +13,13 @@ export const CheckIndicator = ({
   return (
     <div
       className={cn(
-        "flex h-6 w-6 items-center justify-center rounded-full border border-accents-1 bg-white",
-        checked && "bg-primary text-white",
+        "flex h-6 min-w-6 items-center justify-center rounded-full border-[1.5px] border-accents-1 bg-white",
+        checked && "border-yellow-light bg-primary text-white",
         className,
       )}
       {...props}
     >
-      {checked && <CheckIcon />}
+      {checked && <CheckIcon className="w-4 translate-y-[1px]" />}
     </div>
   );
 };
