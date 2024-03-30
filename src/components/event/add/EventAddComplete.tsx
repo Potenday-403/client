@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const EventAddComplete = () => {
   return (
-    <div className="mt-5 flex flex-1 flex-col justify-between border">
+    <div className="mt-5 flex flex-1 flex-col justify-between">
       <div className="flex flex-1 flex-col items-center justify-center">
         <Image
           priority
