@@ -4,6 +4,8 @@ import { EventCard } from "@/components/home/EventCard";
 import { ReminderCard } from "@/components/home/ReminderCard";
 import { ReminderPlaceholder } from "@/components/home/ReminderPlaceholder";
 import { Calendar } from "@/components/ui/Calendar";
+import { Trash2Icon } from "@/components/ui/Icon";
+import { IconButton } from "@/components/ui/IconButton";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Subtitle } from "@/components/ui/Subtitle";
 import { Title } from "@/components/ui/Title";
@@ -56,9 +58,29 @@ export default function HomePage() {
     calendar.onSelect(date);
   };
 
+  const onReminderDelete = () => {
+    // TODO: 리마인더 일괄 삭제
+  };
+
+  const onEventDelete = () => {
+    // TODO: 이벤트 일괄 삭제
+  };
+
   return (
     <main className="px-4 pb-20 pt-4">
-      <Title className="mt-[72px]">경조사 리마인더</Title>
+      <div className="mt-[72px] flex items-center justify-between">
+        <Title>
+          경조사 리마인더
+          <span className="ml-3 text-primary">
+            {reminderCheckGroup.checkedItems.length || ""}
+          </span>
+        </Title>
+        {reminderCheckGroup.checkedItems.length > 0 && (
+          <IconButton onClick={onReminderDelete}>
+            <Trash2Icon />
+          </IconButton>
+        )}
+      </div>
       <Subtitle>10일 이내의 경조사를 확인할 수 있어요</Subtitle>
       <div className="mt-5 flex flex-col gap-[10px]">
         {reminders.length === 0 && <ReminderPlaceholder />}
@@ -79,9 +101,16 @@ export default function HomePage() {
         onSelect={onCalenderSelect}
       />
       {calendar.selected && (
-        <SectionTitle className="mt-10">
-          {format(calendar.selected, "M월 d일", { locale: ko })} 경조사
-        </SectionTitle>
+        <div className="mt-10 flex items-center justify-between">
+          <SectionTitle>
+            {format(calendar.selected, "M월 d일", { locale: ko })} 경조사
+          </SectionTitle>
+          {eventCheckGroup.checkedItems.length > 0 && (
+            <IconButton onClick={onEventDelete}>
+              <Trash2Icon />
+            </IconButton>
+          )}
+        </div>
       )}
       <div className="mt-3 flex flex-col gap-[10px]">
         {remindersOnSelectedDate.map((event) => (
