@@ -11,8 +11,10 @@ import { Subtitle } from "@/components/ui/Subtitle";
 import { Title } from "@/components/ui/Title";
 import { useCalendar } from "@/hooks/useCalender";
 import { useCheckboxGroup } from "@/hooks/useCheckboxGroup";
+import { Event } from "@/models/event";
 import { Reminder } from "@/models/reminder";
-import { PRIORITY } from "@/models/shared";
+import { EVENT_TYPE, PRIORITY } from "@/models/shared";
+import { useDeleteEvent } from "@/services/event";
 import { isIn10DaysFromNow } from "@/utils/date";
 import { format, isSameDay } from "date-fns";
 import { ko } from "date-fns/locale";
@@ -38,12 +40,45 @@ const DUMMY_REMINDERS: Reminder[] = [
   },
 ];
 
+const DUMMY_EVENTS: Event[] = [
+  {
+    id: 1,
+    expectedAmount: 100000,
+    name: "김밤비 결혼식",
+    priority: PRIORITY.CRUCIAL,
+    scheduledAt: new Date().toISOString(),
+    recommendedGreetings: "축하합니다!",
+    type: EVENT_TYPE.WEDDING,
+  },
+  {
+    id: 2,
+    expectedAmount: 100000,
+    name: "김밤비 결혼식",
+    priority: PRIORITY.IMPORTANT,
+    scheduledAt: new Date().toISOString(),
+    recommendedGreetings: "축하합니다!",
+    type: EVENT_TYPE.WEDDING,
+  },
+  {
+    id: 3,
+    expectedAmount: 100000,
+    name: "김밤비 결혼식",
+    priority: PRIORITY.NORMAL,
+    scheduledAt: new Date().toISOString(),
+    recommendedGreetings: "축하합니다!",
+    type: EVENT_TYPE.WEDDING,
+  },
+];
+
 export default function HomePage() {
   const calendar = useCalendar();
   const reminderCheckGroup = useCheckboxGroup();
   const eventCheckGroup = useCheckboxGroup();
 
+  const deleteEventMutation = useDeleteEvent();
+
   const reminders = DUMMY_REMINDERS;
+  const events = DUMMY_EVENTS;
 
   const remindersIn10Days = reminders.filter((reminder) =>
     isIn10DaysFromNow(new Date(reminder.scheduledAt)),
@@ -59,11 +94,19 @@ export default function HomePage() {
   };
 
   const onReminderDelete = () => {
-    // TODO: 리마인더 일괄 삭제
+    deleteEventMutation.mutate(reminderCheckGroup.checkedItems, {
+      onSuccess: () => {
+        reminderCheckGroup.uncheckAll();
+      },
+    });
   };
 
   const onEventDelete = () => {
-    // TODO: 이벤트 일괄 삭제
+    deleteEventMutation.mutate(eventCheckGroup.checkedItems, {
+      onSuccess: () => {
+        eventCheckGroup.uncheckAll();
+      },
+    });
   };
 
   return (
@@ -99,6 +142,7 @@ export default function HomePage() {
         className="mt-10"
         selected={calendar.selected}
         onSelect={onCalenderSelect}
+        events={events}
       />
       {calendar.selected && (
         <div className="mt-10 flex items-center justify-between">

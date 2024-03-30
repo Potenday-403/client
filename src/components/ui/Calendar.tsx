@@ -1,5 +1,7 @@
 "use client";
 
+import { Event } from "@/models/event";
+import { PRIORITY } from "@/models/shared";
 import { cn } from "@/utils/cn";
 import { differenceInCalendarDays } from "date-fns";
 import { ko } from "date-fns/locale";
@@ -12,15 +14,13 @@ import {
 } from "react-day-picker";
 
 // TODO: collapse 기능 추가
-// TODO: 일정 표시 기능 추가
-// TODO: 선택된 날짜 표시 기능 추가
-// TODO: 아이콘 및 스타일 추가
 
 interface CalendarProps {
   className?: string;
   selected?: Date;
   onSelect?: (date?: Date) => void;
   disablePastDates?: boolean;
+  events?: Event[];
 }
 
 export const Calendar = ({
@@ -28,9 +28,10 @@ export const Calendar = ({
   selected,
   onSelect,
   disablePastDates = false,
+  events = [],
 }: CalendarProps) => {
   return (
-    <CalderContext.Provider value={{ disablePastDates }}>
+    <CalderContext.Provider value={{ disablePastDates, events }}>
       <DayPicker
         className={className}
         locale={ko}
@@ -75,7 +76,7 @@ export const Calendar = ({
 };
 
 const Day = ({ date, displayMonth }: DayProps) => {
-  const { disablePastDates } = useCalendarContext();
+  const { disablePastDates, events } = useCalendarContext();
   const ref = useRef<HTMLButtonElement>(null);
   const { activeModifiers, buttonProps, divProps, isButton } = useDayRender(
     date,
@@ -93,6 +94,8 @@ const Day = ({ date, displayMonth }: DayProps) => {
 
   const disabled = isPastDate(date) && disablePastDates;
   const disabledStyle = "pointer-events-none text-accents-4";
+
+  const eventsOnDate = getMax3EventsOnDate(events, date);
 
   if (!isButton) {
     <div
@@ -119,6 +122,13 @@ const Day = ({ date, displayMonth }: DayProps) => {
       {...buttonPropsRest}
     >
       {buttonChildren}
+      {eventsOnDate.length > 0 && (
+        <div className="pointer-events-none absolute -bottom-5 flex items-center gap-1">
+          {eventsOnDate.map((event) => (
+            <EventIndicator key={event.id} priority={event.priority} />
+          ))}
+        </div>
+      )}
     </button>
   );
 };
@@ -139,6 +149,7 @@ const formatCaption: DateFormatter = (date) => {
 
 type CalendarContextValue = {
   disablePastDates: boolean;
+  events: Event[];
 };
 
 const CalderContext = createContext<CalendarContextValue | null>(null);
@@ -153,4 +164,28 @@ const useCalendarContext = () => {
   }
 
   return context;
+};
+
+const BG_COLOR = {
+  [PRIORITY.CRUCIAL]: "bg-red",
+  [PRIORITY.IMPORTANT]: "bg-primary",
+  [PRIORITY.NORMAL]: "bg-green",
+} as const;
+
+interface EventIndicatorProps {
+  priority: Event["priority"];
+}
+
+const EventIndicator = ({ priority }: EventIndicatorProps) => {
+  return <div className={cn("h-2 w-2 rounded-full", BG_COLOR[priority])} />;
+};
+
+const getMax3EventsOnDate = (events: Event[], date: Date) => {
+  return events
+    .filter((event) => {
+      const isEventToday =
+        differenceInCalendarDays(new Date(event.scheduledAt), date) === 0;
+      return isEventToday;
+    })
+    .slice(0, 3);
 };
