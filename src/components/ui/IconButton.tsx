@@ -5,7 +5,7 @@ import React from "react";
 
 const iconButtonVariants = cva(
   cn(
-    "border border-transparent rounded-md",
+    "inline-flex justify-center items-center border border-transparent rounded-md",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring",
   ),
   {
