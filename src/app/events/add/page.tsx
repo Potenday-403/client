@@ -28,7 +28,7 @@ export default function EventAddPage() {
   }, [setStep]);
 
   return (
-    <main className="flex flex-col px-4 pb-4 pt-11">
+    <main className="flex flex-col px-4 pt-4">
       <div
         className={cn(
           "flex justify-between",
