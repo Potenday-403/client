@@ -8,7 +8,7 @@ const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
     return (
       <div
         ref={ref}
-        className={cn("rounded-lg bg-[#F5F5F5]", className)}
+        className={cn("rounded-lg bg-accents-0", className)}
         {...props}
       >
         {children}
