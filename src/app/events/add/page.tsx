@@ -11,11 +11,14 @@ import { ChevronLeftIcon, XIcon } from "@/components/ui/Icon";
 import { IconButton } from "@/components/ui/IconButton";
 import { useEventAddFunnelStore } from "@/store/event";
 import { cn } from "@/utils/cn";
+import { useRouter } from "next/navigation";
 
 export default function EventAddPage() {
   const { step } = useEventAddFunnelStore();
 
   const canMoveToPrevious = step !== "type";
+
+  const router = useRouter();
 
   return (
     <main className="flex flex-col px-4 pb-4 pt-11">
@@ -30,7 +33,7 @@ export default function EventAddPage() {
             <ChevronLeftIcon />
           </IconButton>
         )}
-        <IconButton size="large">
+        <IconButton size="large" onClick={() => router.push("/")}>
           <XIcon />
         </IconButton>
       </div>

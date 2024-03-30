@@ -63,10 +63,11 @@ export const Calendar = ({
             "h-8 w-8 rounded-full p-0 text-center outline-none transition-all",
             "focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-50",
           ),
-          day_today: "bg-primary text-white",
           day_outside: "text-accents-4 aria-selected:text-white",
           day_disabled: "text-accents-4 pointer-events-none bg-accents-5",
           day_hidden: "invisible",
+          day_today: "bg-yellow-light",
+          day_selected: "!bg-primary text-white",
         }}
       />
     </CalderContext.Provider>
