@@ -5,7 +5,7 @@ import React from "react";
 
 const badgeVariants = cva(
   cn(
-    "inline-flex items-center justify-center whitespace-nowrap px-2.5 py-1 rounded-full font-medium text-sm",
+    "transition inline-flex items-center justify-center whitespace-nowrap px-2.5 py-1 rounded-full font-medium text-sm",
   ),
   {
     variants: {
@@ -45,6 +45,7 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
         {...props}
         ref={ref}
         role={onClick ? "button" : undefined}
+        onClick={onClick}
       >
         {startIcon && <Slot className="mr-1 w-5">{startIcon}</Slot>}
         {children}
