@@ -12,13 +12,20 @@ import { IconButton } from "@/components/ui/IconButton";
 import { useEventAddFunnelStore } from "@/store/event";
 import { cn } from "@/utils/cn";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function EventAddPage() {
-  const { step } = useEventAddFunnelStore();
+  const { step, setStep } = useEventAddFunnelStore();
 
   const canMoveToPrevious = step !== "type";
 
   const router = useRouter();
+
+  useEffect(() => {
+    return () => {
+      setStep("type");
+    };
+  }, [setStep]);
 
   return (
     <main className="flex flex-col px-4 pb-4 pt-11">

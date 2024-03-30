@@ -20,6 +20,7 @@ interface EventAddFunnelStore {
   time: string;
   moveToNext: () => void;
   moveToPrevious: () => void;
+  setStep: (step: (typeof STEPS)[number]) => void;
   setEventType: (eventType: string) => void;
   setName: (name: string) => void;
   setPriority: (priority: Priority | "") => void;
@@ -35,6 +36,7 @@ export const useEventAddFunnelStore = create<EventAddFunnelStore>()(
     priority: "",
     date: undefined,
     time: "",
+    setStep: (step) => set({ step }),
     moveToNext: () => {
       const currentStep = get().step;
       const currentStepIndex = STEPS.findIndex((step) => step === currentStep);
