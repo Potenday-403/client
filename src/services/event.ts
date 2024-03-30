@@ -18,8 +18,8 @@ export const eventApi = {
     const response = await api.put(`${ENDPOINT}/${data.id}`, data.body);
     return response.data;
   },
-  deleteEvent: async (id: string) => {
-    const response = await api.delete(`${ENDPOINT}/${id}`);
+  deleteEvent: async (ids: string[]) => {
+    const response = await api.delete(ENDPOINT, { data: { ids } });
     return response.data;
   },
 };
