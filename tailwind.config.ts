@@ -30,7 +30,7 @@ const config: Config = {
         "gray-subtle": "#F2F4F7",
       },
       maxWidth: {
-        main: "600px",
+        main: "480px",
       },
     },
     fontFamily: {
