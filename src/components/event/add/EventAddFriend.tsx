@@ -2,8 +2,10 @@ import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Button } from "@/components/ui/Button";
 import { ArrowRightIcon, CirclePlusIcon } from "@/components/ui/Icon";
 import { Title } from "@/components/ui/Title";
-import { useEventAddFunnelStore } from "@/store/event";
+import { useEventAddFunnelContext } from "@/store/event-add-funnel";
 import { useState } from "react";
+
+const FUNNEL_STEP = "friend";
 
 const FREINDS_INPUT_TYPE = {
   GET_FRIENDS: "GET_FRIENDS",
@@ -16,7 +18,9 @@ type FriendsInputType =
 export const EventAddFriend = () => {
   const [inputType, setInputType] = useState<FriendsInputType | "">("");
 
-  const { moveToNext } = useEventAddFunnelStore();
+  const { funnel } = useEventAddFunnelContext();
+
+  if (funnel.current !== FUNNEL_STEP) return null;
 
   return (
     <div className="mt-5 flex flex-1 flex-col justify-between">
@@ -49,7 +53,7 @@ export const EventAddFriend = () => {
         </div>
       </div>
       <CTAContainer>
-        <Button variant="primary" disabled={!inputType} onClick={moveToNext}>
+        <Button variant="primary" disabled={!inputType} onClick={funnel.next}>
           다음
         </Button>
       </CTAContainer>

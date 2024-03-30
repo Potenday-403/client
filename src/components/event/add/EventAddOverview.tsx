@@ -7,17 +7,21 @@ import { Divider } from "@/components/ui/Divider";
 import { CalendarIcon, Clock2Icon } from "@/components/ui/Icon";
 import { Title } from "@/components/ui/Title";
 import { EVENT_TYPE_LABEL } from "@/models/shared";
-import { useEventAddFunnelStore } from "@/store/event";
+import { useEventAddFunnelContext } from "@/store/event-add-funnel";
 import { format } from "date-fns";
 
+const FUNNEL_STEP = "overview";
+
 export const EventAddOverview = () => {
-  const { eventType, name, time, date, priority, moveToNext } =
-    useEventAddFunnelStore();
+  const { funnel, eventType, name, time, date, priority } =
+    useEventAddFunnelContext();
 
   const onConfirm = async () => {
     // TODO: 경조사 추가
-    moveToNext();
+    funnel.next();
   };
+
+  if (funnel.current !== FUNNEL_STEP) return null;
 
   return (
     <div className="mt-5 flex flex-1 flex-col justify-between">

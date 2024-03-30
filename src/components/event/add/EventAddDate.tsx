@@ -2,10 +2,14 @@ import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Button } from "@/components/ui/Button";
 import { Calendar } from "@/components/ui/Calendar";
 import { Title } from "@/components/ui/Title";
-import { useEventAddFunnelStore } from "@/store/event";
+import { useEventAddFunnelContext } from "@/store/event-add-funnel";
+
+const FUNNEL_STEP = "date";
 
 export const EventAddDate = () => {
-  const { time, setTime, date, setDate, moveToNext } = useEventAddFunnelStore();
+  const { funnel, time, setTime, date, setDate } = useEventAddFunnelContext();
+
+  if (funnel.current !== FUNNEL_STEP) return null;
 
   return (
     <div className="mt-5 flex flex-1 flex-col justify-between">
@@ -26,7 +30,7 @@ export const EventAddDate = () => {
         <Button
           variant="primary"
           disabled={!date || !time}
-          onClick={moveToNext}
+          onClick={funnel.next}
         >
           다음
         </Button>

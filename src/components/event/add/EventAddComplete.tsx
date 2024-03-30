@@ -1,10 +1,19 @@
+"use client";
+
 import calendarImage from "@/assets/images/illust-1.png";
 import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Button } from "@/components/ui/Button";
+import { useEventAddFunnelContext } from "@/store/event-add-funnel";
 import Image from "next/image";
 import Link from "next/link";
 
+const FUNNEL_STEP = "complete";
+
 export const EventAddComplete = () => {
+  const { funnel } = useEventAddFunnelContext();
+
+  if (funnel.current !== FUNNEL_STEP) return null;
+
   return (
     <div className="mt-5 flex flex-1 flex-col justify-between">
       <div className="flex flex-1 flex-col items-center justify-center">

@@ -2,10 +2,14 @@ import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Title } from "@/components/ui/Title";
-import { useEventAddFunnelStore } from "@/store/event";
+import { useEventAddFunnelContext } from "@/store/event-add-funnel";
+
+const FUNNEL_STEP = "name";
 
 export const EventAddName = () => {
-  const { name, setName, moveToNext } = useEventAddFunnelStore();
+  const { funnel, name, setName } = useEventAddFunnelContext();
+
+  if (funnel.current !== FUNNEL_STEP) return null;
 
   return (
     <div className="mt-5 flex flex-1 flex-col justify-between">
@@ -20,7 +24,7 @@ export const EventAddName = () => {
         </div>
       </div>
       <CTAContainer>
-        <Button variant="primary" disabled={!name} onClick={moveToNext}>
+        <Button variant="primary" disabled={!name} onClick={funnel.next}>
           다음
         </Button>
       </CTAContainer>

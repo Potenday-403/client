@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/Button";
 import { Subtitle } from "@/components/ui/Subtitle";
 import { Title } from "@/components/ui/Title";
 import { PRIORITY, PRIORITY_LABEL, Priority } from "@/models/shared";
-import { useEventAddFunnelStore } from "@/store/event";
+import { useEventAddFunnelContext } from "@/store/event-add-funnel";
 import { cn } from "@/utils/cn";
+
+const FUNNEL_STEP = "priority";
 
 const PRIORITIES = {
   [PRIORITY.CRUCIAL]: PRIORITY_LABEL[PRIORITY.CRUCIAL],
@@ -19,7 +21,9 @@ const buttonStyle = {
 } as const;
 
 export const EventAddPriority = () => {
-  const { priority, setPriority, moveToNext } = useEventAddFunnelStore();
+  const { funnel, priority, setPriority } = useEventAddFunnelContext();
+
+  if (funnel.current !== FUNNEL_STEP) return null;
 
   return (
     <div className="mt-5 flex flex-1 flex-col justify-between">
@@ -43,7 +47,7 @@ export const EventAddPriority = () => {
         </div>
       </div>
       <CTAContainer>
-        <Button variant="primary" disabled={!priority} onClick={moveToNext}>
+        <Button variant="primary" disabled={!priority} onClick={funnel.next}>
           다음
         </Button>
       </CTAContainer>

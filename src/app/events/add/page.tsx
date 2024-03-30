@@ -9,48 +9,50 @@ import { EventAddPriority } from "@/components/event/add/EventAddPriority";
 import { EventAddType } from "@/components/event/add/EventAddType";
 import { ChevronLeftIcon, XIcon } from "@/components/ui/Icon";
 import { IconButton } from "@/components/ui/IconButton";
-import { useEventAddFunnelStore } from "@/store/event";
+import {
+  EventAddFunnelContextProvider,
+  useEventAddFunnelContext,
+} from "@/store/event-add-funnel";
 import { cn } from "@/utils/cn";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function EventAddPage() {
-  const { step, setStep } = useEventAddFunnelStore();
+  return (
+    <EventAddFunnelContextProvider>
+      <main className="flex flex-1 flex-col px-4 pt-4">
+        <Header />
+        <EventAddType />
+        <EventAddName />
+        <EventAddDate />
+        <EventAddFriend />
+        <EventAddPriority />
+        <EventAddOverview />
+        <EventAddComplete />
+      </main>
+    </EventAddFunnelContextProvider>
+  );
+}
 
-  const canMoveToPrevious = step !== "type";
+const Header = () => {
+  const { funnel } = useEventAddFunnelContext();
 
   const router = useRouter();
 
-  useEffect(() => {
-    return () => {
-      setStep("type");
-    };
-  }, [setStep]);
-
   return (
-    <main className="flex flex-1 flex-col px-4 pt-4">
-      <div
-        className={cn(
-          "flex justify-between",
-          !canMoveToPrevious && "justify-end",
-        )}
-      >
-        {canMoveToPrevious && (
-          <IconButton size="large">
-            <ChevronLeftIcon />
-          </IconButton>
-        )}
-        <IconButton size="large" onClick={() => router.push("/")}>
-          <XIcon />
+    <div
+      className={cn(
+        "flex justify-between",
+        !funnel.canMoveToPrevious && "justify-end",
+      )}
+    >
+      {funnel.canMoveToPrevious && (
+        <IconButton size="large">
+          <ChevronLeftIcon />
         </IconButton>
-      </div>
-      {step === "type" && <EventAddType />}
-      {step === "name" && <EventAddName />}
-      {step === "date" && <EventAddDate />}
-      {step === "friend" && <EventAddFriend />}
-      {step === "priority" && <EventAddPriority />}
-      {step === "overview" && <EventAddOverview />}
-      {step === "complete" && <EventAddComplete />}
-    </main>
+      )}
+      <IconButton size="large" onClick={() => router.push("/")}>
+        <XIcon />
+      </IconButton>
+    </div>
   );
-}
+};

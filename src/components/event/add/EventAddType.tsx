@@ -2,14 +2,18 @@ import { CTAContainer } from "@/components/layout/CTAContainer";
 import { Button } from "@/components/ui/Button";
 import { Title } from "@/components/ui/Title";
 import { EVENT_TYPE_LABEL } from "@/models/shared";
-import { useEventAddFunnelStore } from "@/store/event";
+import { useEventAddFunnelContext } from "@/store/event-add-funnel";
+
+const FUNNEL_STEP = "type";
 
 export const EventAddType = () => {
-  const { moveToNext, eventType, setEventType } = useEventAddFunnelStore();
+  const { funnel, eventType, setEventType } = useEventAddFunnelContext();
 
   const onEventTypeSelect = (eventType: string) => {
     setEventType(eventType);
   };
+
+  if (funnel.current !== FUNNEL_STEP) return null;
 
   return (
     <div className="mt-5 flex flex-1 flex-col justify-between">
@@ -30,7 +34,7 @@ export const EventAddType = () => {
         </div>
       </div>
       <CTAContainer>
-        <Button variant="primary" disabled={!eventType} onClick={moveToNext}>
+        <Button variant="primary" disabled={!eventType} onClick={funnel.next}>
           다음
         </Button>
       </CTAContainer>
