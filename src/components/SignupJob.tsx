@@ -28,25 +28,23 @@ export function SignupJob({
     api
       .post("/signup", registerData)
       .then((response) => {
-        // 성공 시 처리
         console.log("API 호출 성공", response);
         navigation.push("/");
       })
       .catch((error) => {
-        // 실패 시 처리
         console.error("API 호출 실패", error);
         alert("회원가입실패");
       });
   };
 
   const buttonsData = [
-    { text: "학생", value: "student" },
-    { text: "자영업", value: "self" },
-    { text: "회사원", value: "office" },
-    { text: "공무원", value: "ball" },
-    { text: "무직", value: "house" },
-    { text: "프리랜서", value: "free" },
-    { text: "기타", value: "etc" },
+    { text: "학생", value: "학생" },
+    { text: "자영업", value: "자영업" },
+    { text: "회사원", value: "회사원" },
+    { text: "공무원", value: "공무원" },
+    { text: "무직", value: "무직" },
+    { text: "프리랜서", value: "프리랜서" },
+    { text: "기타", value: "기타" },
   ];
 
   return (
