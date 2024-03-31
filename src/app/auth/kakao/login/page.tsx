@@ -18,9 +18,9 @@ export default function KakaoLoginPage() {
   });
   console.log(query.data, 1);
 
-  // useEffect(() => {
-  //   userInfo ? navigation.push("/") : navigation.push("/signup");
-  // }, [userInfo]);
+  useEffect(() => {
+    userInfo ? navigation.push("/") : navigation.push("/signup");
+  }, [userInfo]);
 
   return (
     <div className="text-white">

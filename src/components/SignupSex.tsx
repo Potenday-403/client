@@ -35,17 +35,17 @@ export function SignupSex({
         </p>
         <div className="flex justify-between gap-[10px]">
           <Button
-            variant={selectedGender === "male" ? "primary" : "default"}
+            variant={selectedGender === "MAIL" ? "primary" : "default"}
             onClick={() => {
-              handleGenderButtonClick("male");
+              handleGenderButtonClick("MAIL");
             }}
           >
             남성
           </Button>
           <Button
-            variant={selectedGender === "female" ? "primary" : "default"}
+            variant={selectedGender === "FEMAIL" ? "primary" : "default"}
             onClick={() => {
-              handleGenderButtonClick("female");
+              handleGenderButtonClick("FEMAIL");
             }}
           >
             여성
