@@ -23,8 +23,10 @@ export const ProgressBar = ({
       {...props}
     >
       <div
-        className="h-full rounded-l-full bg-primary transition-all duration-300 ease-in-out"
-        style={{ width: `${progress}%` }}
+        className="animate-progress h-full rounded-l-full bg-primary"
+        style={{
+          maxWidth: `${progress}%`,
+        }}
       />
     </div>
   );
