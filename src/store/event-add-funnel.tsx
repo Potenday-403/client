@@ -4,16 +4,6 @@ import { Funnel, useFunnel } from "@/hooks/useFunnel";
 import { Priority } from "@/models/shared";
 import { createContext, useContext, useState } from "react";
 
-const STEPS = [
-  "type",
-  "name",
-  "date",
-  "friend",
-  "priority",
-  "overview",
-  "complete",
-];
-
 type EventAddFunnelContextValue = {
   funnel: Funnel;
   eventType: string;
@@ -31,12 +21,16 @@ type EventAddFunnelContextValue = {
 export const EventAddFunnelContext =
   createContext<EventAddFunnelContextValue | null>(null);
 
-export const EventAddFunnelContextProvider = ({
-  children,
-}: {
+interface EventAddFunnelContextProviderProps {
   children: React.ReactNode;
-}) => {
-  const funnel = useFunnel(STEPS);
+  steps: string[];
+}
+
+export const EventAddFunnelContextProvider = ({
+  steps,
+  children,
+}: EventAddFunnelContextProviderProps) => {
+  const funnel = useFunnel(steps);
 
   const [eventType, setEventType] = useState<string>("");
   const [name, setName] = useState<string>("");

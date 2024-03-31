@@ -1,10 +1,5 @@
-import { GiftAddType } from "@/components/gift/add-funnel/GiftAddType";
-import { GiftAddFunnelContextProvider } from "@/store/gift-add-funnel";
+import { GiftAddFunnel } from "@/components/gift/add-funnel/GiftAddFunnel";
 
 export default function GiftsAddPage() {
-  return (
-    <GiftAddFunnelContextProvider>
-      <GiftAddType />
-    </GiftAddFunnelContextProvider>
-  );
+  return <GiftAddFunnel />;
 }

@@ -4,8 +4,6 @@ import { Funnel, useFunnel } from "@/hooks/useFunnel";
 import { EventType } from "@/models/shared";
 import { createContext, useContext, useState } from "react";
 
-const STEPS = ["form", "result", "complete"];
-
 type GreetingsRecommendFunnelContextValue = {
   funnel: Funnel;
   selectedRelationship: string | null;
@@ -23,12 +21,17 @@ type GreetingsRecommendFunnelContextValue = {
 export const GreetingsRecommendFunnelContext =
   createContext<GreetingsRecommendFunnelContextValue | null>(null);
 
+interface GreetingsRecommendFunnelContextProviderProps {
+  children: React.ReactNode;
+
+  steps: string[];
+}
+
 export const GreetingsRecommendFunnelContextProvider = ({
   children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const funnel = useFunnel(STEPS);
+  steps,
+}: GreetingsRecommendFunnelContextProviderProps) => {
+  const funnel = useFunnel(steps);
 
   const [selectedRelationship, setSelectedRelationship] = useState<
     string | null

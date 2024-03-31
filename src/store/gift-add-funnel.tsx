@@ -3,8 +3,6 @@
 import { Funnel, useFunnel } from "@/hooks/useFunnel";
 import { createContext, useContext, useState } from "react";
 
-const STEPS = ["type", "date", "form", "complete"];
-
 type GiftAddFunnelContextValue = {
   funnel: Funnel;
   type?: string;
@@ -17,12 +15,16 @@ const GiftAddFunnelContext = createContext<GiftAddFunnelContextValue | null>(
   null,
 );
 
+interface GiftAddFunnelContextProviderProps {
+  children: React.ReactNode;
+  steps: string[];
+}
+
 export const GiftAddFunnelContextProvider = ({
   children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const funnel = useFunnel(STEPS);
+  steps,
+}: GiftAddFunnelContextProviderProps) => {
+  const funnel = useFunnel(steps);
 
   const [type, setGiftType] = useState<string>();
   const [date, setDate] = useState<Date>();
@@ -42,12 +44,12 @@ export const GiftAddFunnelContextProvider = ({
   );
 };
 
-export const useGiftAddFunnel = () => {
+export const useGiftAddFunnelContext = () => {
   const context = useContext(GiftAddFunnelContext);
 
   if (!context) {
     throw new Error(
-      "useGiftAddFunnel은 GiftAddFunnelContextProvider 컴포넌트 안에서만 사용할 수 있습니다.",
+      "useGiftAddFunnelConext는 GiftAddFunnelContextProvider 컴포넌트 안에서만 사용할 수 있습니다.",
     );
   }
 
