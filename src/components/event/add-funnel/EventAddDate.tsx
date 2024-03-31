@@ -16,7 +16,7 @@ export const EventAddDate = () => {
       <div>
         <Title className="text-[26px]">경조사 일정을 입력해주세요.</Title>
         <div className="mt-10 flex flex-col gap-[10px]">
-          <Calendar selected={date} onSelect={setDate} />
+          <Calendar selected={date} onSelect={setDate} disablePastDates />
           {/* TODO: 스타일 추가 */}
           <input
             className="mt-4 h-10"
