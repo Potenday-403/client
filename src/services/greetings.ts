@@ -6,7 +6,7 @@ import {
   Priority,
   Relationship,
 } from "@/models/shared";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { api } from "./axios";
 
 const ENDPOINT = "/greetings";
@@ -65,30 +65,28 @@ interface GenerateGreetingsByCategoryApiResponse {
 
 const queryKeys = {
   all: () => [ENDPOINT],
+  byEvent: (eventId: number) => [ENDPOINT, "event", eventId],
+  byCategory: (data: GenerateGreetingsByCategoryApiBody) => [
+    ENDPOINT,
+    "category",
+    data,
+  ],
 };
 
-export const useGenerateGreetingsByEvent = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: greetingsApi.generateGreetingsByEvent,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: queryKeys.all(),
-      });
-    },
+export const useGenerateGreetingsByEvent = (
+  data: GenerateGreetingsByEventApiBody,
+) => {
+  return useQuery({
+    queryKey: queryKeys.byEvent(data.eventId),
+    queryFn: () => greetingsApi.generateGreetingsByEvent(data),
   });
 };
 
-export const useGenerateGreetingsByCategory = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: greetingsApi.generateGreetingsByCategory,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: queryKeys.all(),
-      });
-    },
+export const useGenerateGreetingsByCategory = (
+  data: GenerateGreetingsByCategoryApiBody,
+) => {
+  return useQuery({
+    queryKey: queryKeys.byCategory(data),
+    queryFn: () => greetingsApi.generateGreetingsByCategory(data),
   });
 };

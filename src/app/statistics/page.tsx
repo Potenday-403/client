@@ -33,7 +33,27 @@ const DUMMY_STATISTICS = {
 export default function StatisticsPage() {
   const [currentAge, setCurrentAge] = useState<string>();
   const [currentStep, setCurrentStep] = useState(1);
+
+  const currentMonth = new Date().getMonth();
+
+  const [month, setMonth] = useState(currentMonth);
+
   const statistics = DUMMY_STATISTICS;
+
+  const canMoveToPreviousMonth = month > 0;
+  const canMoveToNextMonth = month <= 11;
+
+  const moveToPreviousMonth = () => {
+    if (canMoveToPreviousMonth) {
+      setMonth((prev) => prev - 1);
+    }
+  };
+
+  const moveToNextMonth = () => {
+    if (canMoveToNextMonth) {
+      setMonth((prev) => prev + 1);
+    }
+  };
 
   return (
     <main className="px-4">
@@ -84,11 +104,19 @@ export default function StatisticsPage() {
       <Card className="mt-5">
         <Card.Content>
           <div className="flex items-center gap-1">
-            <IconButton className="text-accents-2">
+            <IconButton
+              className="text-accents-2"
+              onClick={moveToPreviousMonth}
+              disabled={canMoveToPreviousMonth}
+            >
               <ChevronLeftIcon />
             </IconButton>
             <p className="translate-y-[1px] text-base font-semibold">3월</p>
-            <IconButton className="text-accents-2">
+            <IconButton
+              className="text-accents-2"
+              onClick={moveToNextMonth}
+              disabled={canMoveToNextMonth}
+            >
               <ChevronRightIcon />
             </IconButton>
           </div>

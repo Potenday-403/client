@@ -18,7 +18,7 @@ const iconButtonVariants = cva(
   },
 );
 
-interface IconButtonProps
+export interface IconButtonProps
   extends React.ComponentPropsWithoutRef<"button">,
     VariantProps<typeof iconButtonVariants> {
   asChild?: boolean;
