@@ -20,7 +20,7 @@ export default function EventAddPage() {
   return (
     <EventAddFunnelContextProvider>
       <main className="flex flex-1 flex-col px-4 pt-4">
-        <Header />
+        <PageHeader />
         <EventAddType />
         <EventAddName />
         <EventAddDate />
@@ -33,7 +33,7 @@ export default function EventAddPage() {
   );
 }
 
-const Header = () => {
+const PageHeader = () => {
   const { funnel } = useEventAddFunnelContext();
 
   const router = useRouter();

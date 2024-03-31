@@ -7,13 +7,7 @@ import { Header } from "@/components/layout/Header";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Divider } from "@/components/ui/Divider";
-import {
-  ChevronRightIcon,
-  Clock2Icon,
-  FilesIcon,
-  XIcon,
-} from "@/components/ui/Icon";
-import { IconButton } from "@/components/ui/IconButton";
+import { ChevronRightIcon, Clock2Icon, FilesIcon } from "@/components/ui/Icon";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Title } from "@/components/ui/Title";
 import { Event } from "@/models/event";
@@ -47,9 +41,7 @@ export default function EventDetailPage() {
     <main>
       <div className="px-4">
         <Header className="justify-end">
-          <IconButton onClick={() => router.push("/")} size="large">
-            <XIcon />
-          </IconButton>
+          <Header.Close onClick={() => router.push("/")} />
         </Header>
         <div className="flex items-center">
           <p className="mr-[10px] text-[32px] font-bold">
