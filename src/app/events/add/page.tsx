@@ -46,7 +46,7 @@ const Header = () => {
       )}
     >
       {funnel.canMoveToPrevious && (
-        <IconButton size="large">
+        <IconButton size="large" onClick={funnel.previous}>
           <ChevronLeftIcon />
         </IconButton>
       )}
