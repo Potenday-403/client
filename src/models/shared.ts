@@ -5,6 +5,25 @@ export const RELATIONSHIP = {
 
 export type Relationship = (typeof RELATIONSHIP)[keyof typeof RELATIONSHIP];
 
+export const GENDER = {
+  MALE: "MALE",
+  FEMALE: "FEMALE",
+} as const;
+
+export type Gender = (typeof GENDER)[keyof typeof GENDER];
+
+export const OCCUPATION = {
+  STUDENT: "STUDENT",
+} as const;
+
+export type Occupation = (typeof OCCUPATION)[keyof typeof OCCUPATION];
+
+export const AGE_GROUP = {
+  TWENTIES_LATE: "TWENTIES_LATE",
+} as const;
+
+export type AgeGroup = (typeof AGE_GROUP)[keyof typeof AGE_GROUP];
+
 export const EVENT_TYPE = {
   BIRTHDAY: "BIRTHDAY",
   WEDDING: "WEDDING",
