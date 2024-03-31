@@ -1,3 +1,5 @@
+"use client";
+
 import { Funnel, useFunnel } from "@/hooks/useFunnel";
 import { createContext, useContext, useState } from "react";
 
