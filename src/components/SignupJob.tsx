@@ -5,12 +5,15 @@ import { Button } from "@/components/ui/Button";
 import { useState } from "react";
 import { ChevronLeftIcon } from "@/components/ui/Icon";
 import { IconButton } from "@/components/ui/IconButton";
+import { api } from "@/services/axios";
+import { useRouter } from "next/navigation";
 
 export function SignupJob({
   changeStep,
   changeUserInfo,
   registerData,
 }: signuppage) {
+  const navigation = useRouter();
   const [selectedJob, setSelectedJob] = useState("");
   const handleJobButtonClick = (job: string) => {
     setSelectedJob(job);
@@ -19,6 +22,21 @@ export function SignupJob({
   const handleBack = () => {
     changeUserInfo((prv) => ({ ...prv, job: "" }));
     changeStep("sex");
+  };
+
+  const handleSubmit = () => {
+    api
+      .post("/signup", registerData)
+      .then((response) => {
+        // 성공 시 처리
+        console.log("API 호출 성공", response);
+        navigation.push("/");
+      })
+      .catch((error) => {
+        // 실패 시 처리
+        console.error("API 호출 실패", error);
+        alert("회원가입실패");
+      });
   };
 
   const buttonsData = [
@@ -60,6 +78,7 @@ export function SignupJob({
           variant="primary"
           size="large"
           disabled={selectedJob.length === 0}
+          onClick={handleSubmit}
         >
           다음
         </Button>
